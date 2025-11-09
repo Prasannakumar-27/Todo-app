@@ -1,0 +1,177 @@
+/* Base */
+* { box-sizing: border-box; }
+:root{
+  --radius: 12px;
+  --gap: 12px;
+  --border: 1px solid #000;
+  --touch: 44px; /* min touch size */
+}
+html, body { height: 100%; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 24px 12px;
+  display: grid;
+  place-items: start center;
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Container */
+#container {
+  width: min(720px, 100%);
+  background: #fff;
+  border: var(--border);
+  border-radius: 18px;
+  padding: clamp(16px, 2.5vw, 24px);
+}
+#container h2 {
+  text-align: center;
+  margin: 0 0 12px;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+}
+
+/* Inputs */
+#title, #description {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  font-size: 1rem;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#add-btn, #tasks-btn {
+  min-height: var(--touch);
+  min-width: var(--touch);
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+#add-btn {
+  border: 1px solid #111;
+  background: #222;
+  color: #fff;
+}
+#tasks-btn {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 3px solid #5a7f18;
+  background: #eee;
+}
+
+/* Overlay (modal backdrop) */
+#popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+
+#pop-window {
+  position: relative;
+  width: min(700px, 92vw);
+  max-height: 85vh;
+  background: #fff;
+  padding: 20px 16px 24px;
+  border: var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+  overflow: auto;
+}
+#pop-window h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+}
+#pop-window .close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: 1px solid #000;
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  min-height: var(--touch);
+  min-width: var(--touch);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+
+#task-list { text-align: left; }
+.task-item {
+  position: relative;
+  border: var(--border);
+  margin: 10px 4px;
+  padding: 12px 12px 16px;
+  border-radius: 10px;
+}
+.task-item h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e00000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  min-height: 36px; 
+  cursor: pointer;
+}
+
+/* ---------- Responsive  ---------- */
+
+/* Phones (≤ 480px) */
+@media (max-width: 480px) {
+  body { padding: 12px; }
+
+  #container {
+    border-radius: 14px;
+    padding: 14px;
+  }
+
+  #tasks-btn { width: 48px; height: 48px; border-width: 2px; }
+
+  #pop-window {
+    width: 96vw;              
+    max-height: 90vh;
+    padding: 16px 12px 20px;
+    border-radius: 12px;
+  }
+
+  .task-item { margin: 8px 2px; padding: 10px 10px 14px; }
+  .delete-btn { top: 8px; right: 8px; padding: 6px 8px; }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  #container { width: min(680px, 95vw); }
+  #pop-window { width: min(680px, 94vw); }
+}
+
+:focus-visible {
+  outline: 3px solid #4c9ffe;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

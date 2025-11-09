@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div id="container">
+    <h2>Todo List</h2>
+
+    <input id="title" type="text" placeholder="Title" />
+    <textarea id="description" placeholder="Add your task here..." rows="5" cols="40"></textarea>
+
+    <div class="actions">
+      <button id="add-btn" type="button">Add task</button>
+      <button id="tasks-btn" type="button" onclick="openWindow()">📝</button>
+    </div>
+  </div>
+
+  <div id="popup" aria-hidden="true">
+    <div id="pop-window" role="dialog" aria-modal="true" aria-labelledby="task-list-title">
+      <h2 id="task-list-title">Task list</h2>
+      <button class="close-btn" type="button" aria-label="Close" onclick="closeWindow()">✕</button>
+
+      <div id="task-list"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
