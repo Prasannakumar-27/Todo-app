@@ -6,7 +6,8 @@
   --border: 1px solid #000;
   --touch: 44px; /* min touch size */
 }
-html, body { height: 100%; }
+html, body { 
+    height: 100%;}
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: #f5f5f5;
@@ -16,6 +17,12 @@ body {
   place-items: start center;
   line-height: 1.4;
   -webkit-tap-highlight-color: transparent;
+  background-image: url(images/flower_compressed.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  image-rendering: auto;
 }
 
 /* Container */
